@@ -1,4 +1,4 @@
-https://colab.research.google.com/assets/colab-badge.svg](https://colab.research.google.com/drive/1q_N0GQSw9cFm12FKMS4tuGefETixdczC?usp=sharing)
+[https://colab.research.google.com/assets/colab-badge.svg](https://colab.research.google.com/drive/1q_N0GQSw9cFm12FKMS4tuGefETixdczC?usp=sharing)
 
 # Predicting Mortality Outcomes in HIV/AIDS Patients
 ## A Machine Learning Analysis of the ACTG 175 Clinical Trial Dataset

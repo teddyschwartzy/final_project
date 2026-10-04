@@ -1,3 +1,5 @@
+https://colab.research.google.com/assets/colab-badge.svg](https://colab.research.google.com/drive/1q_N0GQSw9cFm12FKMS4tuGefETixdczC?usp=sharing)
+
 # Predicting Mortality Outcomes in HIV/AIDS Patients
 ## A Machine Learning Analysis of the ACTG 175 Clinical Trial Dataset
 
@@ -19,7 +21,7 @@ Can demographic characteristics, behavioral risk factors, treatment history, and
 
 **Dataset:** AIDS Clinical Trials Group Study 175 (ACTG 175)
 
-**Source:** UC Irvine Machine Learning Repository
+**Source:** UCI Machine Learning Repository
 
 **Observations:** 2,139 patients
 
@@ -47,6 +49,26 @@ Can demographic characteristics, behavioral risk factors, treatment history, and
 
 ---
 
+## Running in Google Colab
+
+This project was developed and tested in Google Colab.
+
+To run the notebook:
+
+1. Open the notebook in Google Colab.
+2. Run the installation cell below.
+3. Execute all notebook cells from top to bottom.
+
+### Required Installation
+
+```python
+!pip install ucimlrepo
+```
+
+The ACTG 175 dataset is loaded directly from the UCI Machine Learning Repository using the `ucimlrepo` package, so no manual dataset download is required.
+
+---
+
 ## Project Objectives
 
 ### Exploratory Data Analysis
@@ -54,7 +76,7 @@ Can demographic characteristics, behavioral risk factors, treatment history, and
 - Examine dataset structure and variable types
 - Calculate descriptive statistics
 - Assess missing data
-- Identify data quality issues
+- Identify potential data quality issues
 - Explore variable distributions
 - Visualize relationships among predictors
 
@@ -91,23 +113,23 @@ ROC-AUC will serve as the primary evaluation metric due to its suitability for h
 
 ## Exploratory Visualizations
 
-Initial visualizations include:
+Initial exploratory analyses include:
 
-### Outcome Distribution
+### Distribution of Survival Outcomes
 
-Examines class balance within the target variable.
+Examines class balance within the binary target variable and identifies potential class imbalance concerns.
 
 ### Baseline CD4 Count by Outcome
 
-Compares patient immune status across outcome groups.
+Compares differences in immune system status across patient outcome groups.
 
 ### Age Distribution
 
-Assesses demographic characteristics of the study population.
+Explores the demographic characteristics of the study population and identifies the overall age profile of participants.
 
 ### Correlation Heatmap
 
-Identifies relationships among numeric predictors and potential multicollinearity concerns.
+Evaluates relationships among numerical predictors and highlights potential multicollinearity concerns.
 
 ---
 
@@ -120,6 +142,7 @@ Identifies relationships among numeric predictors and potential multicollinearit
 - Matplotlib
 - Seaborn
 - Scikit-learn
+- UCI ML Repository API (`ucimlrepo`)
 
 ---
 
@@ -132,4 +155,5 @@ Future project phases will include:
 - Cross-validation
 - Feature importance analysis
 - Model comparison
-- Clinical interpretation
+- Clinical interpretation of predictive factors
+- Discussion of ethical considerations and health equity implications

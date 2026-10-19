@@ -1,4 +1,6 @@
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/teddyschwartzy/final_project/blob/main/Final_Project.ipynb)
+GitHub Repository: https://github.com/teddyschwartzy/final_project
+
 # Predicting Mortality Outcomes in HIV/AIDS Patients
 ## A Machine Learning Analysis of the ACTG 175 Clinical Trial Dataset
 
@@ -50,6 +52,32 @@ Can demographic characteristics, behavioral risk factors, treatment history, and
 | cd80 | Baseline CD8 count (cells/µL) |
 | cd820 | CD8 count at 20 weeks (cells/µL) |
 | race | Race category |
+
+## Data Requirements for Custom Uploads
+
+Custom datasets may be analyzed using this pipeline provided they satisfy the minimum requirements needed for preprocessing, statistical testing, and model development.
+
+### Required Variables
+
+| Variable | Description |
+|----------|-------------|
+| target | Binary outcome variable (0 = Alive, 1 = Dead) |
+| age | Age at enrollment |
+| cd420 | CD4 count at 20 weeks (cells/µL) |
+
+These variables are required for the workflow to execute successfully.
+
+### Optional Variables
+
+| Variable | Purpose |
+|----------|---------|
+| gender | Enables chi-square testing |
+| trt | Enables treatment-group ANOVA |
+| time | Enables Kaplan-Meier survival estimation |
+
+Datasets containing the optional variables will receive the corresponding analyses automatically.
+
+Datasets that do not contain the required variables are identified during validation and rejected during ingestion before analysis begins.
 
 ---
 
@@ -162,8 +190,8 @@ To improve the functionality and rigor of the pipeline, the following enhancemen
 - The cohort is moderately imbalanced, with approximately three-quarters of patients alive or censored at the end of follow-up. This imbalance is why the pipeline uses ROC-AUC as the primary metric and applies adaptive class weighting to Logistic Regression.
 - Inferential testing identified statistically meaningful associations between baseline characteristics and the outcome (see the test summary table in the notebook), which informed the predictors carried into the models.
 - All four classifiers substantially outperformed chance discrimination, and the champion model was selected programmatically on the predefined primary metric.
-- Random Forest feature importance placed baseline immune markers and patient age among the most influential predictors, consistent with the HIV clinical literature.
-
+- Random Forest feature importance identified 20-week CD4 count (cd420), the engineered CD4 × age interaction, and baseline CD4/CD8 measurements as some of the strongest predictors of mortality. Among the evaluated models, class-weighted Logistic Regression achieved the highest ROC-AUC (0.7841) and the highest recall (0.7436), leading to its selection as the final model.
+  
 ---
 
 ## Required Libraries
@@ -194,7 +222,9 @@ This project was developed and tested in Google Colab.
 2. Run the installation cell.
 3. Execute all notebook cells from top to bottom.
 
-The ACTG 175 dataset is loaded directly from the UCI Machine Learning Repository using the `ucimlrepo` package, so no manual dataset download is required. To use your own copy instead, set `data_source` to `"local"` in the CONFIG cell and upload the file when prompted.
+The ACTG 175 dataset is loaded directly from the UCI Machine Learning Repository using the ucimlrepo package, so no manual dataset download is required.
+
+If you would like to analyze a local copy of the dataset, change data_source to "local" in the CONFIG cell and upload the file when prompted. Custom datasets must satisfy the project's data requirements described in the "Data Requirements for Custom Uploads" section. Datasets that do not meet these requirements are identified during validation before analysis begins.
 
 ### Option 2: Local Execution
 

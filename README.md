@@ -226,8 +226,9 @@ Note: the local-upload branch requires a Colab-style `files.upload()` prompt; ou
 
 ```text
 ├── Final_Project.ipynb
-├── requirements.txt
-└── README.md
+├── README.md
+├── actg175_dataset.csv
+└── requirements.txt 
 ```
 
 ---

@@ -74,13 +74,13 @@ Can demographic characteristics, behavioral risk factors, treatment history, and
 
 - Independent-samples t-test (age)
 - Chi-square test of independence (gender)
-- One-way ANOVA (baseline CD4 across treatment arms)
+- One-way ANOVA (CD4 counts at 20 weeks across treatment arms)
 
 ### Data Preprocessing
 
 - Handle implausible and missing values
 - Encode categorical variables when present
-- Create a CD4 x age interaction term
+- Create a CD4 at 20 weeks x age interaction term
 - Split, impute, and scale the data using training-set statistics only
 
 ### Predictive Modeling
@@ -119,7 +119,7 @@ The workflow follows the structure below:
    - Central tendency and dispersion for all numeric variables
 3. **Exploratory Data Analysis**
    - Outcome distribution
-   - Age and CD4 count by outcome
+   - Age and CD4 count at 20 weeks by outcome
    - Correlation heatmap
    - Kaplan-Meier survival estimate by treatment arm
 4. **Inferential Statistics**
@@ -128,7 +128,7 @@ The workflow follows the structure below:
    - One-way ANOVA
 5. **Preprocessing & Feature Engineering**
    - Categorical encoding (adaptive)
-   - CD4 x age interaction term (adaptive)
+   - CD4 at 20 weeks x age interaction term (adaptive)
    - Stratified 70/30 split
    - Median imputation and standard scaling
 6. **Model Training & Evaluation**
@@ -151,7 +151,7 @@ To improve the functionality and rigor of the pipeline, the following enhancemen
 
 1. **Modular pipeline refactoring** — Each stage is a method, and a `run()` orchestrator executes them in a fixed sequence, making the workflow reproducible and scalable for other clinical datasets.
 2. **Automated data quality validation** — Reports class imbalance, missing values, and duplicate rows, and checks numeric variables against a clinical data dictionary of plausible ranges before modeling. Columns not present in the uploaded data are skipped, so the stage adapts to other clinical datasets.
-3. **Adaptive feature engineering** — Categorical columns are encoded only if present, and a conditional CD4 x age interaction term captures non-linear relationships that may be clinically significant in predicting mortality.
+3. **Adaptive feature engineering** — Categorical columns are encoded only if present, and a conditional CD4 at 20 weeks x age interaction term captures non-linear relationships that may be clinically significant in predicting mortality.
 4. **Programmatic model selection** — The pipeline evaluates four models and automatically identifies the best-performing model based on a predefined primary metric (ROC-AUC), removing subjectivity from the selection process. Logistic Regression is additionally retrained with balanced class weighting when the event rate falls below the configured threshold.
 5. **Cross-validation stability check** — Each model receives a 5-fold cross-validation score to check the stability of the single-split performance estimates.
 6. **Expanded evaluation suite** — A ROC curve overlay, a confusion matrix for the champion model, a grouped comparison of classification metrics, and Random Forest feature importance.

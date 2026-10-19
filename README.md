@@ -46,8 +46,10 @@ Can demographic characteristics, behavioral risk factors, treatment history, and
 | homo | Homosexual activity indicator |
 | drugs | Intravenous drug use history |
 | karnof | Karnofsky performance score |
-| cd420 | CD4 count (cells/uL) used in the pipeline |
-| cd820 | CD8 count (cells/uL) used in the pipeline |
+| cd40 | Baseline CD4 count (cells/µL) |
+| cd420 | CD4 count at 20 weeks (cells/µL) |
+| cd80 | Baseline CD8 count (cells/µL) |
+| cd820 | CD8 count at 20 weeks (cells/µL) |
 | race | Race category |
 
 ---
